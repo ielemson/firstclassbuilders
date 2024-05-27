@@ -35,12 +35,16 @@
                                           
                                         </ul>
                                     </li>
-                                    <li class="dropdown">
-                                        <a href="#"><span class="rolling-text">Projects</span></a>
-                                        <ul>
-                                            <li><a href="">Projects</a></li>
-                                            <li><a href="">Project Details</a></li>
-                                        </ul>
+                                    <li class="">
+                                        <a href="{{ route("gallery.view") }}"><span class="rolling-text">Gallery</span></a>
+                                        {{-- <ul>
+                                           @if (c{{ route("contact.view") }}ount($projects) > 0)
+                                           @foreach ($projects as $project)
+                                           <li><a href="{{ route("project.view",$project->slug) }}">{{ $project->title }}</a></li>   
+                                           @endforeach
+                                           @endif
+                                           
+                                        </ul> --}}
                                     </li>
                                     <li>
                                         <a href="{{ route("contact.view") }}"><span class="rolling-text">Contact</span></a>

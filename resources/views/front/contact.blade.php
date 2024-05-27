@@ -99,34 +99,83 @@
                         </div>
                         <h2 class="section-title__title title-animation">Send us a message</h2>
                     </div>
-                    <form action="" class="contact-three__form contact-form-validated"
-                        novalidate="novalidate">
+                    <form action="{{ route("contact.form") }}" class="contact-three__form"
+                        novalidate="novalidate" method="POST">
+                        @csrf
                         <div class="row">
                             <div class="col-xl-6 col-lg-6">
                                 <div class="contact-three__input-box">
-                                    <input type="text" placeholder="Your Name" name="name">
+                                    <input type="text" placeholder="Your Name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" required>
+                                    @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
                                 <div class="contact-three__input-box">
-                                    <input type="email" placeholder="Your Email" name="email">
+                                    <input type="email" placeholder="Email Address" name="email" class="form-control @error('email') is-invalid @enderror" required value="{{old('email')}}">
+                                @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
                                 <div class="contact-three__input-box">
-                                    <input type="text" placeholder="Phone Number" name="Phone">
+                                    <input type="text" placeholder="Phone" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{old('phone')}}">
+                                    @error('phone')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-xl-6 col-lg-6">
                                 <div class="contact-three__input-box">
-                                    <input type="text" placeholder="Your Subject" name="Subject">
+                                    <input type="text" placeholder="Subject" name="subject" class="form-control @error('subject') is-invalid @enderror" value="{{old('subject')}}">
+                                    @error('subject')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="contact-three__input-box">
+                                    <div class="captcha">
+                                        <span>{!! captcha_img() !!}</span>
+                                        <button type="button" class="btn btn-danger btn-md" class="reload" id="reload">
+                                            &#x21bb;
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-6 col-lg-6">
+                                <div class="contact-three__input-box">
+                                    <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror"placeholder="Enter Captcha" name="captcha" required>
+                                    @error('captcha')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-xl-12 col-lg-12">
                                 <div class="contact-three__input-box text-message-box">
-                                    <textarea name="message" placeholder="Write your Message"></textarea>
+                                    <textarea name="message" placeholder="Write a Comment" class="form-control @error('message') is-invalid @enderror">
+                                        {{old('message')}}
+                                        </textarea>
+                                        @error('message')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                        @enderror
                                 </div>
                                 <div class="contact-three__btn-box">
                                     <button type="submit" class="thm-btn contact-three__btn">Send message<span
@@ -166,3 +215,17 @@
         <!--CTA One End-->
 
 @endsection
+
+@push("javascripts")
+<script type="text/javascript">
+    $('#reload').click(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function(data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush

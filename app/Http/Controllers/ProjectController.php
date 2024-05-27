@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Project;
 use Illuminate\Support\Facades\File;
 use App\Models\Projectgallery;
+use Intervention\Image\Facades\Image as ResizeImage;
 
 class ProjectController extends Controller
 {
@@ -25,38 +26,34 @@ class ProjectController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
 
-        try {
-            $project = new Project;
-            $project->title = $request->title;
-            $project->status = $request->status;
-            $project->description = $request->description;
-            $project->slug = Str::slug($request->input('title'));
-            $project->save();
+        $project = new Project;
+        // $CoverImg = time().'.'.$request->cover_image->extension();  
+        // $request->cover_image->move(public_path('assets/images/projects'), $CoverImg);
 
-            // if ($project->save()) {
-                foreach ($request->file('images') as $file) {
-                    
-                    $fileUpload = new Projectgallery;
+        $project->title = $request->title;
+        $project->status = $request->status;
+        // $project->cover_image = $CoverImg;
+        $project->description = $request->description;
+        $project->slug = Str::slug($request->input('title'));
 
-                    $filename = time() . '.' . $file->extension();
-                    $file->move(public_path('assets/images/projects'), $filename);
-                    $fileUpload->project_id = $project->id;
-                    $fileUpload->name = $filename;
+        $project->save();
+        foreach ($request->image as $value) {
+            $imageName = time().'_'.$value->getClientOriginalName();
+            $value->move(public_path('assets/images/projects'),$imageName);
+ 
+            $fileUpload = new Projectgallery;
 
-                    $fileUpload->save();
-                }
+            // $filename = time() . '.' . $file->extension();
+            // $file->move(public_path('assets/images/projects'), $filename);
+            $fileUpload->project_id = $project->id;
+            $fileUpload->name = $imageName;
 
-                return redirect()->back()->with('success', 'New project created!');
-            // }
-
-            // return redirect()->route('project.create')->with('success', 'Project created successfully');
-        } catch (\Exception $e) {
-            $bug = $e->getMessage();
-
-            return redirect()->back()->with('error', $bug);
+            $fileUpload->save();
         }
+        return redirect()->back()->with('success','Gallery created successfully!');
+
+      
     }
 
     public function edit(Request $request, $id)

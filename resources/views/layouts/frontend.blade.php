@@ -145,6 +145,7 @@
     
     <!-- template js -->
     <script src="{{ asset("assets/js/elitecons.js") }}"></script>
+@stack('javascripts')
 </body>
 
 </html>

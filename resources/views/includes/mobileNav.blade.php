@@ -19,11 +19,15 @@ $setting = \App\Models\Setting::find(1);
         <ul class="mobile-nav__contact list-unstyled">
             <li>
                 <i class="fa fa-envelope"></i>
+                <a href="mailto:{{ $setting->email1 }}">{{ $setting->email1 }}</a>
+            </li>
+            <li>
+                <i class="fa fa-envelope"></i>
                 <a href="mailto:{{ $setting->email }}">{{ $setting->email }}</a>
             </li>
             <li>
                 <i class="fa fa-phone-alt"></i>
-                <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}</a>
+                <a href="tel:{{ $setting->phone }}">{{ $setting->phone }}, {{ $setting->hotline }}</a>
             </li>
         </ul><!-- /.mobile-nav__contact -->
         <div class="mobile-nav__top">

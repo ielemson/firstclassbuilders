@@ -14,7 +14,7 @@ $footerPosts =  \App\Models\Post::inRandomOrder()->limit(2)->get();
                     <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp" data-wow-delay="100ms">
                         <div class="footer-widget__column footer-widget__about">
                             <div class="footer-widget__logo">
-                                <a href="{{ url("/") }}"><img src="{{ asset("images/settings/$setting->website_logo_dark") }}" alt=""></a>
+                                <a href="{{ url("/") }}"><img src="{{ asset("images/settings/$setting->website_logo_light") }}" alt=""></a>
                             </div>
                             <p class="footer-widget__about-text">
                                 {{ $setting->who_we_are }}

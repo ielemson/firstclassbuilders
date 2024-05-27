@@ -1,5 +1,7 @@
 @php
 $services = \App\Models\Service::where('status',1)->get();
+$projects = \App\Models\Project::where("status",1)->get();
+
 @endphp
 
 <header class="main-header-six">
@@ -9,7 +11,7 @@ $services = \App\Models\Service::where('status',1)->get();
                 <div class="main-menu-six__wrapper-inner">
                     <div class="main-menu-six__left">
                         <div class="main-menu-six__logo">
-                            <a href="{{ url("/") }}"><img src="{{ asset("images/settings/$setting->website_logo_dark") }}" alt="first class builders logo"></a>
+                            <a href="{{ url("/") }}"><img src="{{ asset("images/settings/$setting->website_logo_light") }}" alt="first class builders logo"></a>
                         </div>
                     </div>
                     <div class="main-menu-six__main-menu-box">
@@ -33,12 +35,16 @@ $services = \App\Models\Service::where('status',1)->get();
                                 @endif
                                 </ul>
                             </li>
-                            <li class="dropdown">
-                                <a href="#"><span class="rolling-text">Projects</span></a>
-                                <ul>
-                                    <li><a href="">Projects</a></li>
-                                    {{-- <li><a href="">Project Details</a></li> --}}
-                                </ul>
+                            <li>
+                                <a href="{{ route("gallery.view") }}"><span class="rolling-text">Gallery</span></a>
+                                {{-- <ul>
+                                    @if (count($projects) > 0)
+                                    @foreach ($projects as $project)
+                                    <li><a href="{{ route("project.view",$project->slug) }}">{{ $project->title }}</a></li>   
+                                    @endforeach
+                                    @endif
+                                    
+                                </ul> --}}
                             </li>
                            
                             <li>

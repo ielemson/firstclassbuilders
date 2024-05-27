@@ -27,7 +27,11 @@ Route::get('/category/{category}', 'PageController@showCategory')->name('categor
 Route::get('/about', 'PageController@aboutUs')->name('about.view');
 Route::get('/contact', 'PageController@contactUs')->name('contact.view');
 Route::get('/service/{slug}', 'PageController@service')->name('service.view');
-
+Route::get('/project/{slug}', 'PageController@project')->name('project.view');
+Route::get('/gallery', 'PageController@gallery')->name('gallery.view');
+Route::post('/contactus', 'PageController@contactUsForm')->name('contact.form');
+Route::get('/reload-captcha', 'PageController@reloadCaptcha');
+// Route::get('/reload-captcha', [HomeController::class, 'reloadCaptcha']);
 // admin pages 
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::resource('posts','PostController');

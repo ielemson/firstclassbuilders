@@ -85,6 +85,25 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6">
+                                                        <div class="card">
+                                                            <div class="card-body text-center">
+                                                                <div class="form-group">
+                                                                    <label for="website_title" class="required">{{__('Website Logo Transparent')}}:</label>
+                                                                    <div class="">
+                                                                        @if(!empty($setting->website_logo_light))
+                                                                            <img src="{{ asset("images/settings/$setting->website_logo_light") }}" alt="..." id="website_logo_light" class="img-thumbnail rounded mb-3"  >
+                                                                        @else
+                                                                            <img src="" alt="..." id="website_logo_light" class="img-thumbnail rounded mb-3" >
+                                                                        @endif
+                    
+                                                                        <input type="file" class="form-control" name="website_logo_light">
+                                                                        
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                         
                     
                                                 </div> <!-- row-end -->

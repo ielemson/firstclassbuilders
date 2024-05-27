@@ -31,10 +31,11 @@ class SettingController extends Controller
 
 	public function update(Request $request, $id=1)
 	{
+        // dd($request->all());
 		$rules = [
             'website_title' 			=> 'nullable|string',
             'website_logo_dark'         => 'nullable',
-            // 'website_logo_light'        => 'nullable|string',
+            'website_logo_light'        => 'nullable',
             // 'website_logo_small'        => 'nullable|string',
             'website_favicon'           => 'nullable|string',
             'meta_title'                => 'nullable|string',
@@ -55,19 +56,29 @@ class SettingController extends Controller
 		$input = $request->all();
         // dd($input);
 		$setting = Setting::find($id);
-        if (!empty($input['website_logo_dark'])) {
+        // if (!empty($input['website_logo_dark'])) {
 
-            $newImageName = uniqid() . '-' .'logo'. '.' . $request->website_logo_dark->extension();
+        //     $newImageName = uniqid() . '-' .'logo'. '.' . $request->website_logo_dark->extension();
 
-            $request->website_logo_dark->move(public_path('images/settings'), $newImageName);
+        //     $request->website_logo_dark->move(public_path('images/settings'), $newImageName);
 
-            $input['website_logo_dark']  = $newImageName;
+        //     $input['website_logo_dark']  = $newImageName;
+        //     // dd($input);
+        // }
+
+        if (!empty($input['website_logo_light'])) {
+
+            $newImageNameLight = uniqid() . '-' .'logo_light'. '.' . $request->website_logo_light->extension();
+
+            $request->website_logo_light->move(public_path('images/settings'), $newImageNameLight);
+
+            $input['website_logo_light']  = $newImageNameLight;
             // dd($input);
         }
 
         try {
 			$setting->update($input);
-            // Toastr::success(__('setting.message.update.success'));
+            return redirect()->back()->with('success', 'Settings Updated!');
 		    return redirect()->route('website-setting.edit');
 		} catch (Exception $e) {
             // Toastr::success(__('setting.message.update.error'));
