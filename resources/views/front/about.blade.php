@@ -29,7 +29,7 @@
                 <div class="about-one__left">
                     <div class="about-one__img wow slideInLeft" data-wow-delay="100ms"
                         data-wow-duration="2500ms">
-                        <img src="assets/images/resources/about-one-img-1.jpg" alt="">
+                        <img src="{{ asset("assets/images/resources/ceo-first-class-builders.jpg") }}" alt="about">
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@
                             Welcome to First Class Builders Limited
                         </h2>
                     </div>
-                    <p class="about-one__text">
+                    <p class="about-one__text" style="text-align: justify">
                         First Class Builders Limited is a premier engineering construction company dedicated to delivering top-quality construction services. We specialize in building residential homes, commercial buildings, schools, hospitals, filling stations, and markets.
                     </p>
                     <ul class="about-one__points-list list-unstyled">
@@ -51,7 +51,7 @@
                             
                             <div class="content">
                                 <h3><a href="#">Our Commitment</a></h3>
-                                <p>We are committed to excellence, safety, and innovation in all our projects. Serving companies, corporate businesses, and governments, we tailor our services to meet the unique needs of each client.</p>
+                                <p class="about-one__text" style="text-align: justify">We are committed to excellence, safety, and innovation in all our projects. Serving companies, corporate businesses, and governments, we tailor our services to meet the unique needs of each client.</p>
                             </div>
                         </li>
                       
@@ -67,7 +67,7 @@
 <section class="counter-two">
     <div class="counter-two__bg-box">
         <div class="counter-two__bg"
-            style="background-image: url(assets/images/backgrounds/counter-two-bg.png);"></div>
+            style="background-image: url({{ asset("assets/images/backgrounds/counter-two-bg.png") }});"></div>
     </div>
     <div class="container-fluid">
         <div class="counter-two__top">
@@ -77,7 +77,7 @@
                 </div>
                 <h2 class="section-title__title title-animation">Why Choose Us?</h2>
             </div>
-            <p class="counter-two__top-text">
+            <p class="counter-two__top-text" style="text-align: justify">
                 At First Class Builders Limited, we stand out in the engineering construction industry due to our unwavering commitment to quality, innovation, and customer satisfaction. Here's why you should choose us:
             </p>
         </div>
@@ -163,7 +163,7 @@
                         </div>
                         <h2 class="section-title__title title-animation">We are open <br> for communication</h2>
                     </div>
-                    <p class="contact-two__text">
+                    <p class="contact-two__text" style="text-align: justify">
                         At First Class Builders Limited, we value open communication and are here to assist you with all your construction needs. Whether you have a question about our services, need a consultation, or want to discuss your next project, we are ready to help.
                     </p>
                     <div class="contact-two__call-box">
@@ -179,42 +179,91 @@
             </div>
             <div class="col-xl-6 col-lg-6">
                 <div class="contact-two__right">
-                    <form action="#" class="contact-two__form contact-form-validated"
-                        novalidate="novalidate">
-                        <div class="row">
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="contact-two__input-box">
-                                    <input type="text" placeholder="Your Name" name="name">
-                                </div>
+                    <form action="{{ route("contact.form") }}" class="contact-three__form"
+                    novalidate="novalidate" method="POST">
+                    @csrf
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="contact-three__input-box">
+                                <input type="text" placeholder="Your Name" name="name" class="form-control @error('name') is-invalid @enderror" value="{{old('name')}}" required>
+                                @error('name')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="contact-two__input-box">
-                                    <input type="email" placeholder="Your E-mail" name="email">
-                                </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="contact-three__input-box">
+                                <input type="email" placeholder="Email Address" name="email" class="form-control @error('email') is-invalid @enderror" required value="{{old('email')}}">
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="contact-two__input-box">
-                                    <input type="text" placeholder="Your Phone" name="email">
-                                </div>
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="contact-three__input-box">
+                                <input type="text" placeholder="Phone" name="phone" class="form-control @error('phone') is-invalid @enderror" value="{{old('phone')}}">
+                                @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
-                            <div class="col-xl-6 col-lg-6 col-md-6">
-                                <div class="contact-two__input-box">
-                                    <input type="text" placeholder="Your Location" name="email">
+                        </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="contact-three__input-box">
+                                <input type="text" placeholder="Subject" name="subject" class="form-control @error('subject') is-invalid @enderror" value="{{old('subject')}}">
+                                @error('subject')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="contact-three__input-box">
+                                <div class="captcha">
+                                    <span>{!! captcha_img() !!}</span>
+                                    <button type="button" class="btn btn-danger btn-md" class="reload" id="reload">
+                                        &#x21bb;
+                                    </button>
                                 </div>
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-xl-12 col-lg-12">
-                                <div class="contact-two__input-box text-message-box">
-                                    <textarea name="message" placeholder="Your Massage"></textarea>
-                                </div>
-                                <div class="contact-two__btn-box">
-                                    <button type="submit" class="thm-btn contact-two__btn">Send us<span
-                                            class="icon-dabble-arrow-right"></span></button>
-                                </div>
+                        <div class="col-xl-6 col-lg-6">
+                            <div class="contact-three__input-box">
+                                <input id="captcha" type="text" class="form-control @error('captcha') is-invalid @enderror"placeholder="Enter Captcha" name="captcha" required>
+                                @error('captcha')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
-                    </form>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-12 col-lg-12">
+                            <div class="contact-three__input-box text-message-box">
+                                <textarea name="message" placeholder="Write a Comment" class="form-control @error('message') is-invalid @enderror">
+                                    {{old('message')}}
+                                    </textarea>
+                                    @error('message')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                            </div>
+                            <div class="contact-three__btn-box">
+                                <button type="submit" class="thm-btn contact-three__btn">Send message<span
+                                        class="icon-dabble-arrow-right"></span></button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
                     <div class="result"></div>
                 </div>
             </div>
@@ -222,7 +271,6 @@
     </div>
 </section>
 <!--Contact Two End -->
-
 
 <!--CTA One Start-->
 <section class="cta-one">
@@ -234,7 +282,8 @@
             <div class="cta-one__img">
                 <img src="assets/images/resources/cta-one-img.png" alt="">
             </div>
-            <h3 class="cta-one__title">Craftin digital experiences<br> With that inspire</h3>
+            <h3 class="cta-one__title">Stay Updated with
+               <br> Our Latest News</h3>
             <div class="cta-one__from-box">
                 <form class="cta-one__form">
                     <div class="cta-one__input-box">
@@ -248,3 +297,17 @@
 </section>
 <!--CTA One End-->
 @endsection
+
+@push("javascripts")
+<script type="text/javascript">
+    $('#reload').click(function() {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function(data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush

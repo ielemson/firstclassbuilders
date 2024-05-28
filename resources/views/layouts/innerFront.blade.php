@@ -42,7 +42,6 @@
         <div id="loader"></div>
     </div>
 
-
     <!-- header
     ================================================== -->
     <header class="s-header s-header--opaque">

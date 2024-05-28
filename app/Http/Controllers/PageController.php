@@ -115,13 +115,11 @@ class PageController extends Controller
 
     public function project($slug){
         $project = Project::where("slug",$slug)->first();
-        // dd($project);
         return view("front.project",compact("project"));
     }
 
     public function gallery(){
         $galleries = Projectgallery::all();
-        // dd($project);
         return view("front.gallery",compact("galleries"));
     }
 }

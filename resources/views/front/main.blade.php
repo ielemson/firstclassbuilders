@@ -30,8 +30,8 @@
                         </h2>
                     </div>
                  
-                    <p class="about-two__text">
-                        {{ $setting->about }}  
+                    <p class="about-two__text" style="text-align: justify">
+                        {!! $setting->about  !!}  
                     </p>
                   
                 </div>
@@ -40,7 +40,7 @@
                 <div class="about-two__right">
                     <div class="about-two__img wow slideInRight" data-wow-delay="100ms"
                         data-wow-duration="2500ms">
-                        <img src="assets/images/resources/about-one-img-1.jpg" alt="">
+                        <img src="assets/images/resources/ceo-first-class-builders.jpg" alt="">
                     </div>
                 </div>
             </div>
@@ -60,7 +60,7 @@
                     </div>
                     <div class="services-one__content">
                         <h3 class="services-one__title"><a href="#">Our Commitment</a></h3>
-                        <p class="services-one__text">
+                        <p class="services-one__text" style="text-align: justify">
                             At First Class Builders Limited, we are driven by a commitment to quality, safety, and innovation. Our mission is to deliver construction projects that not only meet but exceed our clients’ expectations. We achieve this by employing a skilled workforce, leveraging cutting-edge technology, and adhering to the highest standards of safety and sustainability.
                         </p>
                     </div>
@@ -75,7 +75,7 @@
                     </div>
                     <div class="services-one__content">
                         <h3 class="services-one__title"><a href="#">Our Client</a></h3>
-                        <p class="services-one__text">
+                        <p class="services-one__text" style="text-align: justify">
                             Our client includes companies, corporate businesses, and government entities. We understand the unique requirements of each sector and tailor our services to provide the best solutions. Whether it’s a large-scale commercial project or a specialized governmental infrastructure, we bring the same level of dedication and expertise to every job.
                         </p>
                     </div>
@@ -90,7 +90,7 @@
                     </div>
                     <div class="services-one__content">
                         <h3 class="services-one__title"><a href="#">Our Vision</a></h3>
-                        <p class="services-one__text"> 
+                        <p class="services-one__text" style="text-align: justify"> 
                             We envision a world where our construction solutions contribute to better living and working environments. By continually pushing the boundaries of what’s possible in construction, we aim to be the preferred choice for clients seeking reliable and innovative building solutions.
                         </p>
                     </div>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="services-one__content">
                         <h3 class="services-one__title"><a href="#">Our Mission</a></h3>
-                        <p class="services-one__text">
+                        <p class="services-one__text" style="text-align: justify">
                           At First Class Builders Limited, our mission is to deliver exceptional construction services that exceed our clients' expectations. We are dedicated to quality, innovation, and sustainability, building structures that enhance communities and improve lives.
                         </p>
                     </div>

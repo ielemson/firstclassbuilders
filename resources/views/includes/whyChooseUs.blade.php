@@ -1,6 +1,6 @@
 <section class="why-choose-one">
     <div class="why-choose-one__bg"
-        style="background-image: url({{ asset("assets/images/backgrounds/work-with-helmet.jpg") }});"></div>
+        style="background-image: url({{ asset("assets/images/backgrounds/first-class-builders-ceo.jpg") }});"></div>
     <div class="container">
         <div class="row">
             <div class="col-xl-6 col-lg-6">
