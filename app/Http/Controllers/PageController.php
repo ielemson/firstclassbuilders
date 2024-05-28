@@ -22,13 +22,15 @@ class PageController extends Controller
         $services = Service::where('status',1)->get();
         $featured = Post::featured()->take(3)->get();
         $projects = Project::where('status',1)->get();
-        // dd($featured);
+        // $galleries = ProjectGallery::paginate(10);
+        // dd($projects);
         return view('front.main', [
             'posts' => $posts,
             'featured' => $featured,
             'services' => $services,
             'projects' => $projects,
-            'categories' => $categories
+            'categories' => $categories,
+            // 'galleries' => $galleries
         ]);
     }
 
@@ -120,6 +122,7 @@ class PageController extends Controller
 
     public function gallery(){
         $galleries = Projectgallery::all();
-        return view("front.gallery",compact("galleries"));
+        $projects = Project::where('status',1)->get();
+        return view("front.gallery",compact("galleries","projects"));
     }
 }

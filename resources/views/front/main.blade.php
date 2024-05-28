@@ -125,9 +125,9 @@
 @include('includes.whyChooseUs')
 <!-- Why Choose One End -->
 
-@include('includes.post')
+{{-- @include('includes.post') --}}
 
-{{-- @include('includes.projects') --}}
+@include('includes.projects')
 
 
 <!--CTA One Start-->

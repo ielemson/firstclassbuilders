@@ -9,5 +9,11 @@ class Projectgallery extends Model
 {
     use HasFactory;
     protected $fillable = ['name','project_id'];
-    protected $table = 'projectgalleries';
+    // protected $table = 'projectgalleries';
+
+    public function projects()
+    {
+        return $this->belongsTo(Project::class);
+    }
+
 }

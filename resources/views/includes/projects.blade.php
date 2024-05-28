@@ -1,4 +1,4 @@
-@if (count($posts) > 0)
+@if (count($projects) > 0)
     <!--Blog One Start-->
 <section class="blog-one">
     <div class="container">
@@ -6,38 +6,29 @@
             <div class="section-title__tagline-box">
                 <span class="section-title__tagline">Our Projects</span>
             </div>
-            <h2 class="section-title__title title-animation">Explore Our Showcase of Excellence</h2>
+            <h2 class="section-title__title title-animation">Explore Our Project Gallery</h2>
         </div>
-        <div class="row">
-            @foreach ($posts as $post)
-                <!--Blog One Single Start-->
-            <div class="col-xl-4 col-lg-4 wow fadeInLeft" data-wow-delay="100ms">
-                <div class="blog-one__single">
-                    <div class="blog-one__img-box">
-                        <div class="blog-one__img">
-                            <img src="{{ asset('images/' . $post->image) }}" alt="{{ $post->title }}">
-                            <img src="{{ asset('images/' . $post->image) }}" alt="{{ $post->title }}">
-                            <a href="#" class="blog-one__link"><span
-                                    class="sr-only"></span></a>
+        <div class="row masonary-layout">
+            @foreach ($projects as $project)
+            @foreach($project->newgallery as $gallery)
+            <div class="col-xl-4 col-lg-6 col-md-6">
+                <div class="gallery-page__single">
+                    <div class="gallery-page__img">
+                        <div class="gallery-page__img-box">
+                            <img src="{{ asset("assets/images/projects/$gallery->name") }}">
                         </div>
-                        <div class="blog-one__date">
-                            <span>{{ Carbon\Carbon::parse($post->created_at)->format('d-m-Y') }}</span>
-                        </div>
-                    </div>
-                    <div class="blog-one__content">
-                        <h3 class="blog-one__title"><a href="{{ route("posts.view",$post->slug) }}">
-                            {{$post->title}}
-                            </a></h3>
-                        <div class="blog-one__read-more">
-                            <a href="{{ route("posts.view",$post->slug) }}">Read more<span
-                                    class="icon-dabble-arrow-right"></span></a>
+                        <div class="gallery-page__icon">
+                            <a class="img-popup" href="{{ asset("assets/images/projects/$gallery->name") }}" title="{{ $project->title }}"><span
+                                    class="fas fa-eye"></span></a>
                         </div>
                     </div>
                 </div>
             </div>
-            <!--Blog One Single End-->
-            @endforeach
-           
+         @endforeach
+            <!--Gallery Page Single Start-->
+        
+        <!--Gallery Page Single End-->
+        @endforeach
         </div>
     </div>
 </section>

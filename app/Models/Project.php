@@ -9,4 +9,9 @@ class Project extends Model
 {
     use HasFactory;
     protected $fillable = ['title','description','status','slug','cover_image'];
+
+    public function newgallery()
+    {
+        return $this->hasMany(Projectgallery::class);
+    }
 }
