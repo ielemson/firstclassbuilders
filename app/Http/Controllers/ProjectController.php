@@ -39,7 +39,8 @@ class ProjectController extends Controller
 
         $project->save();
         foreach ($request->image as $value) {
-            $imageName = time().'_'.$value->getClientOriginalName();
+            // $imageName = time().'_'.$value->getClientOriginalName();
+            $imageName = time().'-'.Str::random(10).'.'.$value->extension();
             $value->move(public_path('assets/images/projects'),$imageName);
  
             $fileUpload = new Projectgallery;
