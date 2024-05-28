@@ -125,7 +125,7 @@
                             <h3 class="count-text">Innovation</h3>
                         </div>
                         <p class="counter-two__count-text">
-                            Cutting-edge construction technologies.
+                        Innovative construction technologies.
                         </p>
                     </div>
                 </div>
@@ -137,7 +137,7 @@
                             <span class="icon-analytics"></span>
                         </div>
                         <div class="counter-two__count count-box">
-                            <h3 class="count-text" data-stop="900" data-speed="1500">
+                            <h3 class="count-text">
                                 Sustainability
                             </h3>
                         </div>
@@ -179,7 +179,7 @@
             </div>
             <div class="col-xl-6 col-lg-6">
                 <div class="contact-two__right">
-                    <form action="https://starplatetheme.com/html/elitecons/assets/inc/sendemail.php" class="contact-two__form contact-form-validated"
+                    <form action="#" class="contact-two__form contact-form-validated"
                         novalidate="novalidate">
                         <div class="row">
                             <div class="col-xl-6 col-lg-6 col-md-6">
