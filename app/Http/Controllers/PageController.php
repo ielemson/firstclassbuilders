@@ -22,7 +22,7 @@ class PageController extends Controller
         $services = Service::where('status',1)->get();
         $featured = Post::featured()->take(3)->get();
         $projects = Project::where('status',1)->get();
-        // $galleries = ProjectGallery::paginate(10);
+        $galleries = ProjectGallery::inRandomOrder()->limit(10)->get();
         // dd($projects);
         return view('front.main', [
             'posts' => $posts,
@@ -30,7 +30,7 @@ class PageController extends Controller
             'services' => $services,
             'projects' => $projects,
             'categories' => $categories,
-            // 'galleries' => $galleries
+            'galleries' => $galleries
         ]);
     }
 

@@ -22,7 +22,7 @@
                 <div>
                     {{-- <form class="form-horizontal" method="POST" action="{{ route('project.store') }}" enctype="multipart/form-data">
                         @csrf --}}
-                        <form action="{{ route('project.store') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('project.store') }}" method="post" enctype="multipart/form-data">
                             @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -51,31 +51,21 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-md-6">
+                                {{-- <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="img">Cover Image <small class="text-danger">Select one image</small></label>
-                                        {{-- <input type="file" name="images[]"   class="form-control @error('images') is-invalid @enderror" value="{{ old('images') }}" required  multiple>
-                                        @error('img')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror --}}
+                                       
                                         <input type="file" name="cover_image" class="form-control @error('cover_image') is-invalid @enderror">
 
                                         @error('cover_image')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                </div>
+                                </div> --}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="img">Gallery Images <small class="text-danger">Select multiple images</small></label>
-                                        {{-- <input type="file" name="images[]"   class="form-control @error('images') is-invalid @enderror" value="{{ old('images') }}" required  multiple>
-                                        @error('img')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror --}}
+                                        
                                         <input type="file" name="image[]" class="form-control @error('image.*') is-invalid @enderror" multiple>
 
                                         @error('image.*')
@@ -83,7 +73,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                            <div class="col-md-12">
+                            {{-- <div class="col-md-12">
 
                                 <div class="form-group">
                                     <label for="">Enter Project Description</label>
@@ -94,7 +84,7 @@
                                         </span>
                                     @enderror
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="col-12">
                                 <div class="form-group button">
                                     <button type="submit" class="btn btn-primary"><i class="fas fa-lock"></i> Create</button>

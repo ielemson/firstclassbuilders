@@ -75,12 +75,12 @@
 
             <div class="swiper-slide">
                 <div class="main-slider-four__bg"
-                    style="background-image: url(assets/images/backgrounds/slider-1.jpg);"></div>
+                    style="background-image: url(assets/images/backgrounds/slider_1.jpg);"></div>
                 <div class="main-slider-four__img-1">
-                    <img src="assets/images/resources/slider-1.jpg" alt="">
+                    <img src="assets/images/resources/slider_1.jpg" alt="">
                 </div>
                 <div class="main-slider-four__img-2">
-                    <img src="assets/images/resources/slider-1.jpg" alt="">
+                    <img src="assets/images/resources/slider_1.jpg" alt="">
                 </div>
                 <div class="main-slider-four__shape-1"></div>
                 <div class="main-slider-four__shape-2"></div>

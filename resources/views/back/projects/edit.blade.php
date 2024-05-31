@@ -12,66 +12,56 @@ Create Service
         <div class="card-body">
             <div>
                 <div>
-                    <form class="form-horizontal" method="POST" action="{{ route('service.update',$service->id) }}" enctype="multipart/form-data">
+                    <form action="{{ route('project.update',$project->id) }}" method="post" enctype="multipart/form-data">
                         @csrf
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label for="title">Enter Service Title</label>
-                                    <input type="text" name="title"  id="title" class="form-control @error('title') is-invalid @enderror" value="{{ $service->title }}" required placeholder="Service Title">
-                                    @error('title')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="title">Status</label>
-                                        <select  name="status"  id="status" class="form-control @error('status') is-invalid @enderror" required >
-                                        <option value="">Select Status</option>
-                                        <option value="1" {{ $service->status == 1 ? 'selected': "" }}>Publish</option>
-                                        <option value="0" {{ $service->status == 0 ? 'selected': "" }}>Unpublish</option>
-                                        </select>
-                                        @error('status')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="img">Image</label>
-                                        <input type="file" name="img"  id="img" class="form-control @error('img') is-invalid @enderror" value="{{ old('title') }}"  placeholder="Service Title">
-                                        @error('img')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-                            <div class="col-md-12">
-
-                                <div class="form-group">
-                                    <label for="newpassword_confirmation">Enter Service Content</label>
-                                    <textarea name="content" id="" class="form-control" rows="5" >{{ $service->content }}</textarea>
-                                    @error('content')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group button">
-                                    <button type="submit" class="btn btn-primary"><i class="fas fa-lock"></i> Update</button>
-                                    {{--  <a role="button" href="admin/index.html" class="bizwheel-btn theme-2">Login</a>  --}}
-                                </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="title">Enter Project Title</label>
+                                <input type="text" name="title"  id="title" class="form-control @error('title') is-invalid @enderror" value="{{ $project->title }}" required placeholder="Project Title">
+                                @error('title')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-                    </form>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="title">Status</label>
+                                    <select  name="status"  id="status" class="form-control @error('status') is-invalid @enderror" required >
+                                    <option value="">Select Status</option>
+                                    <option value="1" {{ $project->status == 1 ? 'selected': '' }}>Published</option>
+                                    <option value="0" {{ $project->status == 0 ? 'selected':'' }}>Unpublished</option>
+                                    </select>
+                                    @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                 
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="img">Gallery Images <small class="text-danger">Select multiple images</small></label>
+                                    
+                                    <input type="file" name="image[]" class="form-control @error('image.*') is-invalid @enderror" multiple>
+
+                                    @error('image.*')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                            </div>
+                        
+                        <div class="col-12">
+                            <div class="form-group button">
+                                <button type="submit" class="btn btn-primary"><i class="fas fa-lock"></i> Update Gallery</button>
+                                {{--  <a role="button" href="admin/index.html" class="bizwheel-btn theme-2">Login</a>  --}}
+                            </div>
+                        </div>
+                    </div>
+                </form>
                 </div>
 
             </div>
