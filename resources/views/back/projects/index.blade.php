@@ -43,7 +43,7 @@
                                     Edit
                                 </a>
                            
-                                <a href="{{ route('project.view', $service->id) }}" class="btn btn-info">
+                                <a href="{{ route('project.view.admin', $service->id) }}" class="btn btn-info">
                                     <i class="fas fa-eye"></i> 
                                     View
                                 </a>

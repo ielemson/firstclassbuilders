@@ -60,10 +60,10 @@ Route::prefix('project')->group(function () {
     Route::get('/', 'ProjectController@index')->name('project.index');
     Route::get('/create', 'ProjectController@create')->name('project.create');
     Route::post('/store', 'ProjectController@store')->name('project.store');
-    Route::post('/project/update/{id}', 'ProjectController@update')->name('project.update');
-    Route::get('/project/edit/{id}', 'ProjectController@edit')->name('project.edit');
-    Route::get('/project/view/{id}', 'ProjectController@projectView')->name('project.view');
-    Route::get('/project/delete/{id}', 'ProjectController@projectDelete')->name('project.gallery.delete');
+    Route::post('/update/{id}', 'ProjectController@update')->name('project.update');
+    Route::get('/edit/{id}', 'ProjectController@edit')->name('project.edit');
+    Route::get('/view/{id}', 'ProjectController@projectView')->name('project.view.admin');
+    Route::get('/delete/{id}', 'ProjectController@projectDelete')->name('project.gallery.delete');
 
     // Route::post('/website-setting/update/{id}', 'SettingController@update')->name('website-setting.update');
     // Route::get('/website-setting/edit', 		 [App\Http\Controllers\Admin\SettingController::class, 'edit'])->name('website-setting.edit');
