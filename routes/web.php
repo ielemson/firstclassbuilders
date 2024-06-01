@@ -36,13 +36,13 @@ Route::get('/reload-captcha', 'PageController@reloadCaptcha');
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function () {
     Route::resource('posts','PostController');
     Route::resource('categories','CategoryController')->except('show');
-
+    Route::get('/update/password', 'SettingController@settingPassword')->name('website-password.update');
+    Route::post('/setting-update/password', 'SettingController@updatePassword')->name('setting.password.update');
+    Route::get('/settings-logout', 'SettingController@perform')->name('logout.perform');
     // Setting
 Route::prefix('setting')->group(function () {
     Route::get('/website-setting/edit', 'SettingController@edit')->name('website-setting.edit');
     Route::post('/website-setting/update/{id}', 'SettingController@update')->name('website-setting.update');
-    // Route::get('/website-setting/edit', 		 [App\Http\Controllers\Admin\SettingController::class, 'edit'])->name('website-setting.edit');
-    // Route::post('/website-setting/update/{id}',  [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('website-setting.update');
 });
 
 // Services

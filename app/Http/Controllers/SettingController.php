@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Setting;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
+
 // use Brian2694\Toastr\Facades\Toastr;
 class SettingController extends Controller
 {
@@ -85,5 +90,44 @@ class SettingController extends Controller
 		    return redirect()->route('website-setting.edit');
 		}
 	}
+
+
+    public function settingPassword(){
+
+        return view("back.settings.reset-password");
+    }
+
+    public function updatePassword(Request $request)
+{
+
+        # Validation
+        $request->validate([
+            'old_password' => 'required',
+            'new_password' => 'required|confirmed',
+        ]);
+
+
+        #Match The Old Password
+        if(!Hash::check($request->old_password, auth()->user()->password)){
+            return back()->with("error", "Old Password Doesn't match!");
+        }
+
+
+        #Update the new Password
+        User::whereId(auth()->user()->id)->update([
+            'password' => Hash::make($request->new_password)
+        ]);
+
+        return back()->with("status", "Password changed successfully!");
+}
+
+public function perform()
+{
+    Session::flush();
+
+    Auth::logout();
+
+    return redirect('login');
+}
 }
 

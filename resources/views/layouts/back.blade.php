@@ -127,6 +127,22 @@
                                     </p>
                                 </a>
                             </li>
+                            {{-- <li class="nav-item">
+                                <a href="{{ route('website-password.update') }}" class="nav-link">
+                                    <i class="nav-icon fa fa-cogs"></i>
+                                    <p>
+                                        Reset Password
+                                    </p>
+                                </a>
+                            </li> --}}
+                            <li class="nav-item">
+                                <a href="{{ route('logout.perform') }}" class="nav-link">
+                                    <i class="nav-icon fa fa-cogs text-danger"></i>
+                                    <p>
+                                        Logout
+                                    </p>
+                                </a>
+                            </li>
                         @endif
                     </ul>
                 </nav>
