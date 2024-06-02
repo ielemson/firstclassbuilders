@@ -17,7 +17,7 @@ class PageController extends Controller
     {
         $posts = Post::where('featured', false)
             ->with('user', 'categories')
-            ->get();
+            ->paginate(8);
         $categories = Category::all();
         $services = Service::where('status',1)->get();
         $featured = Post::featured()->take(3)->get();

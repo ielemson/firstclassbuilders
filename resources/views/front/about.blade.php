@@ -273,7 +273,7 @@
 <!--Contact Two End -->
 
 <!--CTA One Start-->
-<section class="cta-one">
+{{-- <section class="cta-one">
     <div class="container">
         <div class="cta-one__inner">
             <div class="cta-one__shape-1">
@@ -294,7 +294,7 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
 <!--CTA One End-->
 @endsection
 

@@ -125,13 +125,14 @@
 @include('includes.whyChooseUs')
 <!-- Why Choose One End -->
 
-{{-- @include('includes.post') --}}
+@include('includes.post')
 
-@include('includes.projects')
+@include('includes.gallery')
+{{-- @include('includes.projects') --}}
 
 
 <!--CTA One Start-->
-@include('includes.newsletter')
+{{-- @include('includes.newsletter') --}}
 <!--CTA One End-->
 
 @endsection

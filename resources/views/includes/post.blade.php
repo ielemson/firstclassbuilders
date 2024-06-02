@@ -37,7 +37,7 @@
             </div>
             <!--Blog One Single End-->
             @endforeach
-           
+            {{ $posts->links('pagination::bootstrap-4') }}
         </div>
 {{-- 
 

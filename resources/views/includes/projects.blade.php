@@ -9,7 +9,7 @@
             <h2 class="section-title__title title-animation">Explore Our Project Gallery</h2>
         </div>
         <div class="row masonary-layout">
-          
+
             @foreach($galleries as $gallery)
             <div class="col-xl-4 col-lg-6 col-md-6">
                 <div class="gallery-page__single">

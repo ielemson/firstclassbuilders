@@ -55,7 +55,7 @@
     <div class="custom-cursor__cursor-two"></div>
 
     <!-- preloader -->
-    <div class="loader-wrap">
+    {{-- <div class="loader-wrap">
         <div class="preloader">
             <div id="handle-preloader" class="handle-preloader">
                 <div class="animation-preloader">
@@ -96,7 +96,7 @@
                 </div>   
             </div>
         </div>
-    </div>
+    </div> --}}
     <!-- preloader end -->
 
     <div class="page-wrapper">
